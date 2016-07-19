@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Locale;
 
-
 public class LogAnalyzer {
     public static Collection<LogToken> analyze(String path, java.time.LocalDateTime timeFrom, LocalDateTime timeTo) {
         ArrayList<LogToken> tokensList = new ArrayList<>();
