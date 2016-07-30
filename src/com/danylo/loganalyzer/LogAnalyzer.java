@@ -1,4 +1,4 @@
-package com.danylo.logAnalyzer;
+package com.danylo.loganalyzer;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -10,9 +10,9 @@ import java.util.Collection;
 import java.util.Locale;
 
 public class LogAnalyzer {
-    public static Collection<LogToken> analyze(String path, java.time.LocalDateTime timeFrom, LocalDateTime timeTo) {
+    public static Collection<LogToken> analyze(String path, java.time.LocalDateTime timeFrom, LocalDateTime timeTo) throws IOException{
         ArrayList<LogToken> tokensList = new ArrayList<>();
-        try(BufferedReader reader = new BufferedReader(new FileReader(path))) {
+        BufferedReader reader = new BufferedReader(new FileReader(path));
             while (reader.ready()) {
                 String line = reader.readLine();
                 String timeString = line.substring(line.indexOf("[") + 1, line.indexOf("]"));
@@ -22,8 +22,8 @@ public class LogAnalyzer {
                     break;
                 }
                 if (time.isAfter(timeFrom) || time.isEqual(timeFrom)) {
-                    String message = line.substring(line.indexOf("\"") + 1, line.lastIndexOf("\""));
-                    String methodString = message.substring(0, message.indexOf(" "));
+                    String content = line.substring(line.indexOf("\"") + 1, line.lastIndexOf("\""));
+                    String methodString = content.substring(0, content.indexOf(" "));
                     HttpMethod method = null;
                     if (methodString.equals("GET")) {
                         method = HttpMethod.GET;
@@ -31,15 +31,10 @@ public class LogAnalyzer {
                     if (methodString.equals("POST")) {
                         method = HttpMethod.POST;
                     }
-                    message = message.substring(message.indexOf(" ") + 1, message.length());
+                    String message = content.substring(content.indexOf(" ") + 1, content.length());
                     tokensList.add(new LogToken(time, method, message));
                 }
             }
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-
         return tokensList;
     }
 }

@@ -1,8 +1,8 @@
-package logAnalyzerTest;
+package com.danylo.loganalyzertest;
 
-import com.danylo.logAnalyzer.HttpMethod;
-import com.danylo.logAnalyzer.LogAnalyzer;
-import com.danylo.logAnalyzer.LogToken;
+import com.danylo.loganalyzer.HttpMethod;
+import com.danylo.loganalyzer.LogAnalyzer;
+import com.danylo.loganalyzer.LogToken;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
@@ -14,8 +14,8 @@ import static org.junit.Assert.assertTrue;
 
 public class LogAnalyzerTest {
     @Test
-    public void analyze() throws Exception {
-        String path = "c:/temp/access_log";
+    public void analyzeTest() throws Exception {
+        String path = "test/com/danylo/loganalyzertest/accesslog/access_log";
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MMM/yyyy:HH:mm:ss XXXX", Locale.US);
         LocalDateTime timeFrom = LocalDateTime.parse("07/Mar/2004:17:21:44 -0800", formatter);
         LocalDateTime timeTo = LocalDateTime.parse("07/Mar/2004:17:58:00 -0800", formatter);

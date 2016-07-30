@@ -1,4 +1,4 @@
-package com.danylo.messageStore;
+package com.danylo.messagestore;
 
 import java.io.Serializable;
 import java.util.Date;

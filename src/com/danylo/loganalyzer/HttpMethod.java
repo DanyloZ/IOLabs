@@ -1,4 +1,4 @@
-package com.danylo.logAnalyzer;
+package com.danylo.loganalyzer;
 
 public enum HttpMethod {
     GET, POST

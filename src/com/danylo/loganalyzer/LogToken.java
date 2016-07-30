@@ -1,4 +1,4 @@
-package com.danylo.logAnalyzer;
+package com.danylo.loganalyzer;
 
 import java.time.LocalDateTime;
 
