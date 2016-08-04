@@ -25,10 +25,10 @@ public class LogAnalyzer {
                     String content = line.substring(line.indexOf("\"") + 1, line.lastIndexOf("\""));
                     String methodString = content.substring(0, content.indexOf(" "));
                     HttpMethod method = null;
-                    if (methodString.equals("GET")) {
+                    if ("GET".equals(methodString)) {
                         method = HttpMethod.GET;
                     }
-                    if (methodString.equals("POST")) {
+                    if ("POST".equals(methodString)) {
                         method = HttpMethod.POST;
                     }
                     String message = content.substring(content.indexOf(" ") + 1, content.length());
